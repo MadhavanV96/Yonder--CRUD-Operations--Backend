@@ -6,7 +6,36 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+
+const allowedOrigins = ['http://localhost:5173', 'https://crudoperationsyonderbots.netlify.app/'];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // Ensure cookies are sent
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  })
+);
+
+
+
+
+
+
+
+
+
+
+
+
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 

@@ -9,7 +9,7 @@ const app = express();
 // app.use(cors());
 
 
-const allowedOrigins = ['http://localhost:5174', 'https://crudoperationsyonderbots.netlify.app/'];
+const allowedOrigins = ['http://localhost:5174', 'https://crudoperationsyonderbots.netlify.app'];
 app.use(
   cors({
     origin: function (origin, callback) {
